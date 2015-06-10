@@ -25,7 +25,7 @@ class AgentDeployer(object):
 		self.server_conn = pika.BlockingConnection(pika.ConnectionParameters(controller_addr))
 		self.channel = self.server_conn.channel()
 		self.channel.queue_declare(queue=status_queue)
-		
+
 		while (True):
 			# Get info from agents and pass it using the aforementioned dict.
 			sys_status['CPU'] = self.cpu.getData()
