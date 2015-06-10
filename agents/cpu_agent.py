@@ -18,7 +18,7 @@ class cpu_agent(object):
 		return self.description
 
 	def getData(self):
-		self.data['Name'] = self.getDescription()
-		self.data['Cores'] = self.getCores()
-		self.data['Usage'] = self.getUsage()
+		self.data['name'] = self.getDescription()
+		self.data['cores'] = self.getCores()
+		self.data['usage'] = self.getUsage()
 		return self.data

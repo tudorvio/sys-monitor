@@ -14,6 +14,6 @@ class mem_agent(object):
 		return int(self.total) - int(free)
 		
 	def getData(self):
-		self.data['Free memory'] = self.getFreeMem()
-		self.data['Used memory'] = self.getUsedMem()
+		self.data['free_mem'] = self.getFreeMem()
+		self.data['used_mem'] = self.getUsedMem()
 		return self.data

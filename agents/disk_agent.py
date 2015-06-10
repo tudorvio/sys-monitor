@@ -15,6 +15,6 @@ class disk_agent(object):
 		return self.bytes_written
 
 	def getData(self):
-		self.data['Bytes read'] = self.getRead()
-		self.data['Bytes written'] = self.getWritten()
+		self.data['bytes_read'] = self.getRead()
+		self.data['bytes_written'] = self.getWritten()
 		return self.data

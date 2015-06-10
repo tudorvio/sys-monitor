@@ -15,6 +15,6 @@ class net_agent(object):
 		return self.bytes_received
 
 	def getData(self):
-		self.data['Sent bytes'] = self.getSent()
-		self.data['Received bytes'] = self.getReceived()
+		self.data['sent_bytes'] = self.getSent()
+		self.data['received_bytes'] = self.getReceived()
 		return self.data
