@@ -6,9 +6,15 @@ class net_agent(object):
 		self.net = self.interface.Win32_PerfRawData_Tcpip_NetworkInterface()[0]
 		self.bytes_sent = self.net.BytesSentPerSec
 		self.bytes_received = self.net.BytesReceivedPerSec
-		
+		self.data = {}
+
 	def getSent(self):
 		return self.bytes_sent
-		
+
 	def getReceived(self):
 		return self.bytes_received
+
+	def getData(self):
+		self.data['Sent bytes'] = self.getSent()
+		self.data['Received bytes'] = self.getReceived()
+		return self.data

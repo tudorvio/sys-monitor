@@ -6,9 +6,15 @@ class disk_agent(object):
 		self.disk = self.interface.Win32_PerfRawData_PerfDisk_PhysicalDisk()[0]
 		self.bytes_read = self.disk.DiskReadBytesPerSec
 		self.bytes_written = self.disk.DiskWriteBytesPerSec
-		
+		self.data = {}
+
 	def getRead(self):
 		return self.bytes_read
-		
+
 	def getWritten(self):
 		return self.bytes_written
+
+	def getData(self):
+		self.data['Bytes read'] = self.getRead()
+		self.data['Bytes written'] = self.getWritten()
+		return self.data
