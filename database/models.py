@@ -1,7 +1,7 @@
-from sqlalchemy import *
+from sqlalchemy.ext import declarative
 from sys-monitor.agents import cpu_agent
 
-Base = declarative_base()
+Base = declarative.declarative_base()
 
 class CPU(Base):
 	__tablename__ = 'CPU'

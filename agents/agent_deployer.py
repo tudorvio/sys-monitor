@@ -1,5 +1,6 @@
 import pika
 import time
+import json
 
 from cpu_agent import *
 from mem_agent import *
@@ -31,7 +32,8 @@ class AgentDeployer(object):
 			sys_status['Disk'] = self.disk.getData()
 			sys_status['Memory'] = self.mem.getData()
 			sys_status['Network'] = self.net.getData()
-			channel.basic_publish(exchange = '', routing_key = status_queue, body = sys_status)
+			data = json.dumps(sys_status)
+			channel.basic_publish(exchange = '', routing_key = status_queue, body = data)
 			# Sleep until next update. See `conf.py` for monitor_interval.
 			time.sleep(monitor_interval)
 

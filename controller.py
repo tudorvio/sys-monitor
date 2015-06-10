@@ -8,8 +8,7 @@ class Controller(object):
 		self.channel.queue_declare(queue=status_queue)
 		
 	def callback(ch, method, properties, body):
-		# TO DO: convert the received dict to JSON and load it into an SQLAlchemy db.
-		# Not sure if it's the way to go, I'm still researching this.
+		self.sys_status = json.loads(body)
 	
 	def monitor(self):
 		self.channel.basic_consume(callback, queue = status_queue, no_ack = True)
