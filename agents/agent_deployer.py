@@ -19,7 +19,7 @@ class AgentDeployer(object):
 		sys_status = {}
 
 	# Get data from the agents and send it to the controller node.
-	def runAgents(self):	
+	def run(self):	
 		# Connect to controller node. See `conf.py` for controller_addr and status_queue.
 		self.server_conn = pika.BlockingConnection(pika.ConnectionParameters(controller_addr))
 		self.channel = self.server_conn.channel()
@@ -34,3 +34,6 @@ class AgentDeployer(object):
 			channel.basic_publish(exchange = '', routing_key = status_queue, body = sys_status)
 			# Sleep until next update. See `conf.py` for monitor_interval.
 			time.sleep(monitor_interval)
+
+deployed_agents = AgentDeployer()
+deployed_agents.run()
